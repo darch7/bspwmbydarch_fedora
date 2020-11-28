@@ -1,0 +1,74 @@
+#! /bin/sh
+
+#     @@@       @@@@@@@@  @@@@@@@@@@    @@@@@@   @@@  @@@  @@@@@@@    @@@@@@   @@@@@@@
+#     @@@       @@@@@@@@  @@@@@@@@@@@  @@@@@@@@  @@@@ @@@  @@@@@@@@  @@@@@@@@  @@@@@@@@
+#     @@!       @@!       @@! @@! @@!  @@!  @@@  @@!@!@@@  @@!  @@@  @@!  @@@  @@!  @@@
+#     !@!       !@!       !@! !@! !@!  !@!  @!@  !@!!@!@!  !@   @!@  !@!  @!@  !@!  @!@
+#     @!!       @!!!:!    @!! !!@ @!@  @!@  !@!  @!@ !!@!  @!@!@!@   @!@!@!@!  @!@!!@!
+#     !!!       !!!!!:    !@!   ! !@!  !@!  !!!  !@!  !!!  !!!@!!!!  !!!@!!!!  !!@!@!
+#     !!:       !!:       !!:     !!:  !!:  !!!  !!:  !!!  !!:  !!!  !!:  !!!  !!: :!!
+#      :!:      :!:       :!:     :!:  :!:  !:!  :!:  !:!  :!:  !:!  :!:  !:!  :!:  !:!
+#      :: ::::   :: ::::  :::     ::   ::::: ::   ::   ::   :: ::::  ::   :::  ::   :::
+#     : :: : :  : :: ::    :      :     : :  :   ::    :   :: : ::    :   : :   :   : :
+
+
+PANEL_FIFO=/tmp/panel-fifo
+PANEL_WM_NAME=bspwm_panel
+FUENTE_BAR="Source Han Sans JP:Bold:size=10"
+FUENTE_ICONOS="Font Awesome 5 Free:style=Regular:size=11"
+FUENTE_ICONOS2="Font Awesome:style=Regular:size=11"
+#FUENTE_ICONOS3="JoyPixels:style=Regular:size=9"
+BAR_POSICION="1330x25+16+5"
+
+if xdo id -a "$PANEL_WM_NAME" > /dev/null ; then
+printf "%s\n" "The panel is already running." >&2
+exit 1
+fi
+
+trap 'trap - TERM; kill 0'B TERM QUIT EXIT
+
+[ -e "$PANEL_FIFO" ] && rm "$PANEL_FIFO"
+mkfifo "$PANEL_FIFO"
+
+bspc subscribe report > "$PANEL_FIFO" &
+
+#NET
+while true; do
+echo -e 'N' $(ip addr | awk '/state UP/ { print $2 }' | cut -d":" -f1)
+sleep 5
+done > "$PANEL_FIFO" &
+
+#HORA
+while true; do
+echo -e 'C' $(date +'%H:%M')
+sleep 5
+done > "$PANEL_FIFO" &
+
+#FECHA
+while true; do
+echo -e 'D' $(date +'  %a, %d %b')
+sleep 5
+done > "$PANEL_FIFO" &
+
+#BARRA DE TITULOS
+xtitle -sf 'T%s\n' -t25 > "$PANEL_FIFO" &
+
+#TEMPERATURA
+temp -sf'X%.1f' -n0 > "$PANEL_FIFO" &
+
+#VOLUMEN Y BATERIA
+volume -sf 'VS%s' > "$PANEL_FIFO" &
+volume -sf 'VI%i' > "$PANEL_FIFO" &
+battery -sf 'BS%s' > "$PANEL_FIFO" &
+battery -sf 'BI%i' > "$PANEL_FIFO" &
+battery -sf 'BC%s' > "$PANEL_FIFO" &
+
+. panel_colors
+
+. panel_bar < "$PANEL_FIFO" | lemonbar -a 20 -u 3 -o +0 -f "$FUENTE_BAR" -f "$FUENTE_ICONOS" -f "$FUENTE_ICONOS2" -f "$FUENTE_ICONOS3" -n "$PANEL_WM_NAME" -g "$BAR_POSICION" -F "$COLOR_DEFAULT_FG" -B "$COLOR_DEFAULT_BG" | sh &
+
+wid=$(xdo id -m -a "$PANEL_WM_NAME")
+
+xdo above -t "$(xdo id -N Bspwm -n root | sort | head -n 1)" "$wid"
+
+wait
