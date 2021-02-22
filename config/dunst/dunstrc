@@ -1,7 +1,7 @@
 [global]
     monitor = 0
     follow = keyboard
-    geometry = "350x5-0+30"
+    geometry = "350x5-6+35"
     indicate_hidden = yes
     shrink = no
     transparency = 15
@@ -10,16 +10,13 @@
     padding = 10
     horizontal_padding = 10
     frame_width = 3
-# Bordes De Notificaciones
-# 1- colorfull 2- darkmode 3-dracula 
-    frame_color = "#FF51DC"
-#  	frame_color = "#dddddd"
-# 	frame_color = "#FF79C6"
+# Bordes De Notificaciones 
+frame_color = "#FF51DC"
 	
     # Define a color for the separator.
     # possible values are:
     #  * auto: dunst tries to find a color fitting to the background;
-    #  * foreground: use the same color as the foreground;
+	foreground: = "#FFFF00";
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
     separator_color = frame
@@ -70,11 +67,11 @@
 [experimental]
     per_monitor_dpi = false
 
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+grave
-    context = ctrl+shift+period
+#[shortcuts]
+#    close = ctrl+space
+#    close_all = ctrl+shift+space
+#    history = ctrl+grave
+#    context = ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
@@ -88,10 +85,8 @@
 [urgency_normal]
     background = "#181818"
 # Letra de Notificaciones
-# 1- colorfull 2- darkmode 3-dracula     
-    foreground = "#FFFF00"
-#    foreground = "#CFC7C4"
-# 	 foreground = "#FFFF00"
+foreground = "#ebddb2"
+     foreground = "#dddddd"
      timeout = 5
 
 [urgency_critical]

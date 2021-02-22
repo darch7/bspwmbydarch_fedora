@@ -4,17 +4,22 @@ esta guia está hecha con la instalacion minimal con fedora server.
 -----------------------------------------------------------
 ## solución wifi fedora 
 
- sudo dnf install iwl600g2a-firmware.noarch NetworkManager-wifi
+ sudo dnf install iwl600g2a-firmware NetworkManager-wifi
 ----------------------------------------------------------
 ## clonar repositorio bspwmbydarch
 
-1- git clone https://github.com/darch7/bspwmbydarch
+1- git clone https://github.com/darch7/bspwmbydarch_fedora
+2- cp -R bspwmbydarch_fedora/config/* $HOME/.config/ 
+3- cp -R bspwmbydarch_fedora/.local $HOME/ 
+4- sudo chmod +x .local/bin/scripts
+5- cp -R bspwmbydarch_fedora/home/.[^.]* $HOME/ 
+6- cd bspwmbydarch/compilar/st 
+7- sudo make install 
+8- sudo cp -R bspwmbydarch_fedora/root/fzf/* /usr/share/fzf
+9- sudo cp -R bspwmbydarch_fedora/root/gtk/iconos/* /usr/share/icons
+10- sudo cp -R bspwmbydarch_fedora/root/gtk/temas/* /usr/share/themes
+11- sudo cp -R bspwmbydarch_fedora/root/wall/* /usr/share/
 
-2- cp -R bspwmbydarch/config/* ~/.config/
-
-3- cd .config/bspwm
-
-4- sudo chmod u+x scripts
 
 -----------------------------------------------------------
 ## instalar repos necesarios... 
@@ -54,36 +59,28 @@ sudo usermod -a -G video (tu usuario)
 1- sudo dnf install @multimedia 
 
 ------------------------------------------------------------
-## compilar dmenu
+## instalar unclutter (ocultador de puntero de mouse)
 
 
-1- entrar en la carpeta compilar.
+1- sudo dnf copr enable nbeernink/unclutter-xfixes
+2- sudo dnf install unclutter-xfixes asciidoc
+3- git clone https://github.com/Airblader/unclutter-xfixes
+4- cd unclutter-xfixes
+5- make
+6- sudo make install
 
-compilar dmenu
+-----------------------------------------------------------------------
 
-cd dmenu
-sudo make clean install
+## instalar paquetes para bspwm.
 
------------------------------------------------------------
+1- sudo dnf groupinstall "Development Tools"
 
-lemonbar:
-
-abrir terminal: 
-
-cd
-mkdir lemon
-cd lemon 
-
-git clone https://github.com/krypt-n/bar
-git clone https://github.com/baskerville/xdo.git
-git clone https://github.com/baskerville/sutils.git
-git clone https://github.com/baskerville/xtitle.git
+2- sudo dnf install @multimedia
 
 
-make
-sudo make install
+3- sudo dnf install cmake meson bspwm sxhkd rofi nitrogen pcmanfm zsh zsh-autosuggestions zsh-syntax-highlighting zathura-zsh-completion tmux htop telegram-desktop leafpad xarchviver ffmpeg maim xclip xdotool mpv google-chrome-stable dnf-utils ranger neovim neofetch libva-intel-driver slock fzf lxappearance transmission pavucontrol sxiv blueberry dunst zathura-pdf-poppler zathura intel-media-driver polkit-gnome papirus-icon-theme polybar
 
-a los 4 repos clonados uno por uno.
+
 ---------------------------------------------------------------------
 
 ## instalar picom fork bordes redondeados
@@ -98,17 +95,6 @@ c- ninja -C build
 
 d- ninja -C build install
 
------------------------------------------------------------------------
-
-## instalar paquetes para bspwm.
-
-1- sudo dnf groupinstall "Development Tools"
-
-2- sudo dnf install @multimedia
-
-
-3- sudo dnf install cmake meson bspwm sxhkd xterm nitrogen pcmanfm zsh.x86_64 zsh-autosuggestions.noarch zsh-syntax-highlighting.noarc zathura-zsh-completion.noarch tmux htop telegram-desktop leafpad xarchviver ffmpeg maim xclip xdotool mpv google-chrome-stable dnf-utils fontawesome-fonts.noarch adobe-source-han-sans-jp-fonts.noarch adobe-source-han-serif-jp-fonts.noarch ranger neovim neofetch libva-intel-driver.x86_6 slock fzf lxappearance transmission pavucontrol sxiv blueberry dunst zathura-pdf-poppler.x86_64 zathura.x86_64 
-
 ------------------------------------------------------------
 
 Xterm 
@@ -120,9 +106,15 @@ para aplicar cambios hechos o temas de Xresources en xterm
 
 
 ------------------------------------------------------------
-cambiar a zsh
+## cambiar a zsh
 
 1- chsh -s $(which zsh) tuusuario
+
+## instalar tema zsh
+
+1- sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+2- git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k 
+
 
 ----------------------------------------------------------------------
 ## spotify + adblock 

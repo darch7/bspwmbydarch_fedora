@@ -11,14 +11,14 @@
 #_______________________Atajos Basicos__________________________________
 # launch menu
 super + {_,shift +} d
-		{programas,dmenu_run -w 300 -x 10 -y 50}
+		{rofi -modi drun -show drun -width 22,pass rofi_root}
 #Terminal
 super + {_,shift +} Return
-		{xterm,xterm -e tmux} 
+		{st,st -e tmux} 
 # Menu/Apagado/Reboot/Recargar,bspwm,sxhkd/bloqueodepantalla
 super + BackSpace
-		$HOME/.config/bspwm/scripts/menuapagado
-# Cerrar apps
+		$HOME/.local/bin/scripts/menuapagado
+# Cerrar apps<
 super + q
 		bspc node -{c,k}
 
@@ -27,14 +27,14 @@ super + ctrl + {m,x,y,z}
 		bspc node -g {marked,locked,sticky,private}
 # Recargar por defecto
 super + alt {r,e}
-			{bspc wm -r;dunstify -i ~/.config/bspwm/scripts/arch.png BSPWMRC RECARGADO,pkill -USR1 -x sxhkd;dunstify -i ~/.config/bspwm/scripts/arch.png SXHKDRC RECARGADO}
+			{bspc wm -r;dunstify -i ~/.local/bin/scripts/arch.png BSPWMRC RECARGADO,pkill -USR1 -x sxhkd;dunstify -i ~/.local/bin/scripts/arch.png SXHKDRC RECARGADO}
 #_________________________Apps__________________________________________
-# ranger/Pcmanfm root
+# ranger/ranger root
 super + {_,shift +} e
-		{xterm ranger,sudo xterm ranger} 
+		{st -e ranger,sudo -A st -e ranger} 
 # Pcmanfm/pcmanfm root
 super + {_,shift +} r
-		{pcmanfm,sudo pcmanfm}	
+		{pcmanfm,sudo -A pcmanfm}	
 # Browser
 super + w
 		google-chrome-stable
@@ -58,16 +58,16 @@ super + t
 		telegram-desktop
 # Wifi-menu/nmtui
 super + a
-		xterm nmtui
+		st -e nmtui
 # Htop
 super + h
-		xterm htop
+		st -e htop
 # Qemu the best VM
 super + k
-		sudo virt-manager
+		virt-manager
 # Nvim
 super + shift + n
- 		xterm nvim
+ 		st -e nvim
 #____________________Manejos de ventanas_________________________________
 # rotar ventanas 90°/ventana flotante/fijar ventana/
 super + {o,s,i}
@@ -139,40 +139,46 @@ shift + F8
 #Brightness up
 #XF86MonBrightness
 shift + Up
-		light -A 10
+		xbacklight -inc 5
 #Brightness down
 #XF86MonBrightnessDown
 shift + Down
-		light -U 10
+		xbacklight -dec 5
 #__________________________Scripts______________________________________
 # Menu de capturas
 Print {_,shift + }
-		{maim -m 1 captura-pantalla-"$(date '+%y%m%d-%H%M-%S').png",$HOME/.config/bspwm/scripts/menucaptura}
+		{maim -m 1 D-shot-captura-pantalla-"$(date '+%y%m%d-%H%M-%S').png",$HOME/.local/bin/scripts/menucaptura}
 # Menu de grabacion de video
 super + Print
-		$HOME/.config/bspwm/scripts/menugrabacion
+		$HOME/.local/bin/scripts/menugrabacion
 # Monitor
 super + shift + m
-		monitor
+		lxrandr
 #__________________________Utilidades____________________________________
-#Busqueda Rapida De Archivos Locales
-alt + F1 
-		dmenufind
 # Clima 
-alt + F2
-		xterm -hold clima
+alt + F1
+	 st -e sh -c 'clima ; $SHELL'
 # Calendario
-alt + F3
-		xterm calcurse
+alt + F2
+		st -e calcurse
 # Bluetooth
-alt + F4
+alt + F3
 		blueberry
 # Calculadora
-alt + F5
-		xterm -e bc -lq
+alt + F4
+		st -e bc -lq
 # Redshift
-alt + F6
+alt + F5
 		redshift
 # PDF ATAJOS SXHKDRC
 alt + F12
 			zathura $HOME/.config/sxhkd/atajos/atajos.pdf
+
+#___________________________Polybar____________________________________
+# Ocultar Polybar
+super + alt + space
+	polybar-msg cmd hide 
+	
+# Mostrar Polybar 
+super + ctrl + space 
+	polybar-msg cmd show
