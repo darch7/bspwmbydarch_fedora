@@ -123,6 +123,12 @@ para aplicar cambios hechos o temas de Xresources en xterm
 2- cd spotify-adblock-linux
 3- wget -O cef.tar.bz2 http://opensource.spotify.com/cefbuilds/cef_binary_80.0.8%2Bgf96cd1d%2Bchromium-80.0.3987.132_linux64_minimal.tar.bz2
 4- tar -xf cef.tar.bz2 --wildcards '*/include' --strip-components=1
+
+-------------------------------------------------------------------------------
+instalar gnome basico minimal (compilar st o elegir una terminal)
+-------------------------------------------------------------------------------------
+
+sudo dnf install gnome-shell gdm pcmanfm  gnome-sessions gnome-initial-setup gnome-tour gnome-usage gnome-control-center gnome-tweaks gnome-screenshots gnome-backgrounds
 5- make
 6- sudo make install
 7- sudo dnf install spotify 
