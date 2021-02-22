@@ -139,11 +139,11 @@ shift + F8
 #Brightness up
 #XF86MonBrightness
 shift + Up
-		xbacklight -inc 5
+		light -A 5
 #Brightness down
 #XF86MonBrightnessDown
 shift + Down
-		xbacklight -dec 5
+		light -U 5
 #__________________________Scripts______________________________________
 # Menu de capturas
 Print {_,shift + }
