@@ -4,7 +4,7 @@ esta guia está hecha con la instalacion minimal con fedora server.
 -----------------------------------------------------------
 ## solución wifi fedora 
 
- sudo dnf install iwl600g2a-firmware NetworkManager-wifi
+ sudo dnf install iwl600g2a-firmware NetworkManager-wifi NetworkManager-tui
 ----------------------------------------------------------
 ## clonar repositorio bspwmbydarch
 
