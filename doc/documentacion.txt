@@ -47,7 +47,7 @@ esta guia está hecha con la instalacion minimal con fedora server.
 
 1- sudo dnf groupinstall "Development Tools"
 
-2- sudo dnf install libX11-xcb.x86_64 libX11-devel.x86_64 libXinerama.x86_64 libXinerama-devel.x86_64 libXft.x86_64 libXft-devel.x86_64 alsa-lib.x86_64 alsa-lib-devel.x86_64 xcb-util-wm-devel.x86_64 xcb-util-wm.x86_64 xcb-util-devel.x86_64 libev-devel.x86_64 xcb-util-renderutil-devel.x86_64 xcb-util-image-devel.x86_64 pixman-devel.x86_64 uthash-devel.noarch libconfig-devel.x86_64 pcre-devel.x86_64 libgle-devel.x86_64 dbus-c++-devel.x86_64
+2- sudo dnf install libX11-xcb libX11-devel libXinerama libXinerama-devel libXft libXft-devel alsa-lib alsa-lib-devel xcb-util-wm-devel xcb-util-wm xcb-util-devel libev-devel xcb-util-renderutil-devel  xcb-util-image-devel pixman-devel uthash-devel libconfig-devel pcre-devel libgle-devel dbus-c++-devel
 
 
 sudo usermod -a -G video (tu usuario)
@@ -63,7 +63,7 @@ sudo usermod -a -G video (tu usuario)
 
 
 1- sudo dnf copr enable nbeernink/unclutter-xfixes
-2- sudo dnf install unclutter-xfixes asciidoc
+2- sudo dnf install asciidoc
 3- git clone https://github.com/Airblader/unclutter-xfixes
 4- cd unclutter-xfixes
 5- make
@@ -123,12 +123,14 @@ para aplicar cambios hechos o temas de Xresources en xterm
 2- cd spotify-adblock-linux
 3- wget -O cef.tar.bz2 http://opensource.spotify.com/cefbuilds/cef_binary_80.0.8%2Bgf96cd1d%2Bchromium-80.0.3987.132_linux64_minimal.tar.bz2
 4- tar -xf cef.tar.bz2 --wildcards '*/include' --strip-components=1
+5- make
+6- sudo make install
+7- sudo dnf install spotify 
 
 -------------------------------------------------------------------------------
 instalar gnome basico minimal (compilar st o elegir una terminal)
 -------------------------------------------------------------------------------------
 
-sudo dnf install gnome-shell gdm pcmanfm  gnome-sessions gnome-initial-setup gnome-tour gnome-usage gnome-control-center gnome-tweaks gnome-screenshots gnome-backgrounds
-5- make
-6- sudo make install
-7- sudo dnf install spotify 
+1- sudo dnf install gnome-shell gdm pcmanfm  gnome-session gnome-initial-setup gnome-tour gnome-usage gnome-control-center gnome-tweaks gnome-screenshot gnome-backgrounds
+
+2- sudo systemctl enable gdm.service -f
