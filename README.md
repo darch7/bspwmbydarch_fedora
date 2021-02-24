@@ -1,3 +1,3 @@
 #bspwmbydarch_fedora
 
-![captura-pantalla-201127-2301-33](https://user-images.githubusercontent.com/70046164/100494013-166cb380-311c-11eb-9fe3-56084ccc261c.png)
+![D-shot-captura-pantalla-210223-2329-46](https://user-images.githubusercontent.com/70046164/108939957-52d38100-7631-11eb-86ea-34fa135f484b.png)
