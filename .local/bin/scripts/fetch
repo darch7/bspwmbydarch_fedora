@@ -6,10 +6,10 @@
 
 # user is already defined
 host="$(cat /etc/hostname)"
-os='Arch Linux'
+os='Freidora Linux'
 kernel="$(uname -sr)"
 uptime="$(uptime -p | sed 's/up //')"
-packages="$(pacman -Q | wc -l)"
+packages="$(rpm -qa | wc -l)"
 shell="$(basename "$SHELL")"
 
 ## UI DETECTION
