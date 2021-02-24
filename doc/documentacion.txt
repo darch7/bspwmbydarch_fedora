@@ -47,7 +47,7 @@ esta guia está hecha con la instalacion minimal con fedora server.
 
 1- sudo dnf groupinstall "Development Tools"
 
-2- sudo dnf install libX11-xcb libX11-devel libXinerama libXinerama-devel libXft libXft-devel alsa-lib alsa-lib-devel xcb-util-wm-devel xcb-util-wm xcb-util-devel libev-devel xcb-util-renderutil-devel  xcb-util-image-devel pixman-devel uthash-devel libconfig-devel pcre-devel libgle-devel dbus-c++-devel
+2- sudo dnf install libX11-xcb libX11-devel libXinerama libXinerama-devel libXft libXft-devel  dbus-c++-devel
 
 
 sudo usermod -a -G video (tu usuario)
@@ -78,7 +78,7 @@ sudo usermod -a -G video (tu usuario)
 2- sudo dnf install @multimedia
 
 
-3- sudo dnf install cmake meson bspwm sxhkd rofi nitrogen pcmanfm zsh zsh-autosuggestions zsh-syntax-highlighting zathura-zsh-completion tmux htop telegram-desktop leafpad xarchviver ffmpeg maim xclip xdotool mpv google-chrome-stable dnf-utils ranger neovim neofetch libva-intel-driver slock fzf lxappearance transmission pavucontrol sxiv blueberry dunst zathura-pdf-poppler zathura intel-media-driver polkit-gnome papirus-icon-theme polybar
+3- sudo dnf install cmake meson bspwm sxhkd rofi nitrogen pcmanfm zsh zsh-autosuggestions zsh-syntax-highlighting zathura-zsh-completion tmux htop telegram-desktop leafpad xarchiver ffmpeg maim xclip xdotool mpv google-chrome-stable dnf-utils ranger neovim neofetch libva-intel-driver slock fzf lxappearance transmission pavucontrol sxiv blueberry dunst zathura-pdf-poppler zathura intel-media-driver polkit-gnome papirus-icon-theme polybar xdg-user-dirs && xdg-user-dirs-update
 
 
 ---------------------------------------------------------------------
@@ -131,6 +131,6 @@ para aplicar cambios hechos o temas de Xresources en xterm
 instalar gnome basico minimal (compilar st o elegir una terminal)
 -------------------------------------------------------------------------------------
 
-1- sudo dnf install gnome-shell gdm pcmanfm  gnome-session gnome-initial-setup gnome-tour gnome-usage gnome-control-center gnome-tweaks gnome-screenshot gnome-backgrounds
+1- sudo dnf install gnome-shell gdm pcmanfm  gnome-session gnome-initial-setup gnome-tour gnome-control-center gnome-tweaks gnome-screenshot gnome-backgrounds
 
-2- sudo systemctl enable gdm.service -f
+2- sudo systemctl set-default graphical.target
