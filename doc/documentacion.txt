@@ -47,7 +47,7 @@ esta guia está hecha con la instalacion minimal con fedora server.
 
 1- sudo dnf groupinstall "Development Tools"
 
-2- sudo dnf install libX11-xcb libX11-devel libXinerama libXinerama-devel libXft libXft-devel  dbus-c++-devel
+2- sudo dnf install libX11-xcb libX11-devel libXinerama libXinerama-devel libXft libXft-devel harfbuzz-devel
 
 
 sudo usermod -a -G video (tu usuario)
