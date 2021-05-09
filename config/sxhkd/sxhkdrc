@@ -19,7 +19,7 @@ super + {_,shift +} Return
 super + BackSpace
 		$HOME/.local/bin/scripts/menuapagado
 # Cerrar apps<
-super + q
+super + {_,shift + } q
 		bspc node -{c,k}
 
 # set the node flags
@@ -34,10 +34,10 @@ super + {_,shift +} e
 		{st -e ranger,sudo -A st -e ranger} 
 # Pcmanfm/pcmanfm root
 super + {_,shift +} r
-		{pcmanfm,sudo -A pcmanfm}	
+		{thunar,sudo -A thunar}	
 # Browser
 super + w
-		google-chrome-stable
+		firefox
 # Pavucontrol
 super + v
 		pavucontrol
@@ -123,7 +123,7 @@ super { ,+ shift }+ z
 #_______________________Multimedia______________________________________
 # Subir,Bajar Volumen
 XF86Audio{Raise,Lower}Volume
-		amixer sset Master 5%{+,-}
+		amixer set Master 5%{+,-}
 # Mute
 XF86AudioMute
 		amixer -D pulse set Master 1+ toggle

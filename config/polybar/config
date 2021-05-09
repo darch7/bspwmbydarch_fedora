@@ -87,7 +87,7 @@ module-margin-left = 0
 module-margin-right = 0
 enable-ipc = true
 modules-left = izq logotitulo der xwindow
-modules-center = abajoabre izq lluvia frio calor ram cpu temperature xbacklight pulseaudio der abajocierra
+modules-center = abajoabre izq lluvia frio calor ram cpu temperature light pulseaudio der abajocierra
 modules-right = abajoabre izq network-trafico der flechader 
 wm-restack = bspwm
 cursor-click = pointer
@@ -134,14 +134,21 @@ label-foreground = ${colors.color7}
 format-foreground = ${colors.color7}
 format-background = ${colors.background}
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+[module/light]
+type = custom/script
+exec = ~/.local/bin/modulos/light
+format ="|  <label> "
+label = %output%%
+scroll-up = exec light -A 5
+scroll-down = exec light -U 5
+label-foreground = ${colors.color7}
+format-foreground = ${colors.color7}
 format-background = ${colors.background}
 
+
+
 [module/pulseaudio]
-type = internal/pulseaudio
+type = internal/alsa
 format-volume = "|  <label-volume>"
 format-muted = "|  <label-muted>"
 label-volume = %percentage%%
@@ -543,6 +550,12 @@ content-font = 3
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+#[module/backlight-acpi]
+#inherit = module/xbacklight
+#type = internal/backlight
+#card = intel_backlight
+#format-background = ${colors.background}
 
 ;[module/alsa]
 ;type = internal/alsa

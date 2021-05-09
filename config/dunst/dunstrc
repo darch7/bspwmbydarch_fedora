@@ -85,7 +85,7 @@ frame_color = "#FF51DC"
 [urgency_normal]
     background = "#181818"
 # Letra de Notificaciones
-foreground = "#ebddb2"
+foreground = "#FFF331"
      foreground = "#dddddd"
      timeout = 5
 

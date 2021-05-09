@@ -25,8 +25,7 @@ polybar bar1 &
 polybar bar2 &
 dunst &
 temas &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-eval $(gnome-keyring-daemon -s -- components=pkcs11,secrets,ssh,gpg) &
+lxsession &
 unclutter &
 xsetroot -cursor_name left_ptr &
 wmname 'LG3D'
@@ -46,9 +45,9 @@ bspc monitor -d  一 二 三 四 五 六 七 八 九 零
 #______________________BORDES Y COLORES/CONF BSPWM_______________________
 
 bspc config border_width 	2
-bspc config window_gap 		15
-bspc config top_padding		30
-bspc config bottom_padding	30
+bspc config window_gap 		5
+bspc config top_padding		32
+bspc config bottom_padding	32
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
