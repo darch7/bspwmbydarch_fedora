@@ -34,13 +34,10 @@ super + {_,shift +} e
 		{st -e ranger,sudo -A st -e ranger} 
 # Pcmanfm/pcmanfm root
 super + {_,shift +} r
-		{thunar,sudo -A thunar}	
+		{pcmanfm,sudo -A pcmanfm}	
 # Browser
 super + w
 		firefox
-# Pavucontrol
-super + v
-		pavucontrol
 # Torrent
 super + b
 		transmission-gtk
@@ -50,9 +47,6 @@ super + n
 # Spotify
 super + m
 		env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify %U
-# Leafpad
-super + l
-		leafpad
 # Telegram
 super + t
 		telegram-desktop
@@ -62,9 +56,6 @@ super + a
 # Htop
 super + h
 		st -e htop
-# Qemu the best VM
-super + k
-		virt-manager
 # Nvim
 super + shift + n
  		st -e nvim
@@ -126,7 +117,7 @@ XF86Audio{Raise,Lower}Volume
 		amixer set Master 5%{+,-}
 # Mute
 XF86AudioMute
-		amixer -D pulse set Master 1+ toggle
+		amixer set Master toggle
 # Play/Pause
 shift + F7
 		dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
@@ -167,9 +158,6 @@ alt + F3
 # Calculadora
 alt + F4
 		st -e bc -lq
-# Redshift
-alt + F5
-		redshift
 # PDF ATAJOS SXHKDRC
 alt + F12
 			zathura $HOME/.config/sxhkd/atajos/atajos.pdf
