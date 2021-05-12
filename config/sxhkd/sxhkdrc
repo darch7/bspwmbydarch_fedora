@@ -114,7 +114,7 @@ super { ,+ shift }+ z
 #_______________________Multimedia______________________________________
 # Subir,Bajar Volumen
 XF86Audio{Raise,Lower}Volume
-		amixer set Master 5%{+,-}
+		amixer set Master 2%{+,-}
 # Mute
 XF86AudioMute
 		amixer set Master toggle
