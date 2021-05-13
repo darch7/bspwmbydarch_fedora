@@ -34,7 +34,7 @@ super + {_,shift +} e
 		{st -e ranger,sudo -A st -e ranger} 
 # Pcmanfm/pcmanfm root
 super + {_,shift +} r
-		{nautilus,sudo -A nautilus}	
+		{pcmanfm,sudo -A pcmanfm}	
 # Browser
 super + w
 		firefox
