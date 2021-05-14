@@ -44,6 +44,9 @@ super + b
 # Nitrogen/walls
 super + n
 		nitrogen
+# Alsamixer
+super + c
+		st -e alsamixer
 # Spotify
 super + m
 		env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify %U
