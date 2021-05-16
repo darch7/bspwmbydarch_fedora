@@ -1,24 +1,21 @@
 Instalacion guia by darch7 Fedora. 
 
-esta guia está hecha con la instalacion minimal con fedora server. 
+esta guia está hecha con la instalacion minimal con fedora server o fedora everything. 
 -----------------------------------------------------------
 ## solución wifi fedora 
 
- sudo dnf install iwl600g2a-firmware NetworkManager-wifi NetworkManager-tui
+ sudo dnf install NetworkManager-wifi NetworkManager-tui && sudo dnf groupinstall "Hardware-Support"
 ----------------------------------------------------------
 ## clonar repositorio bspwmbydarch
 
 1- git clone https://github.com/darch7/bspwmbydarch_fedora
 2- cp -R bspwmbydarch_fedora/config/* $HOME/.config/ 
-3- cp -R bspwmbydarch_fedora/.local $HOME/ 
+3- cp -R bspwmbydarch_fedora/.local $HOME/
+4- mv -R bspwmbydarch_fedora/.local/fonts $HOME/.local/share/fonts/
 4- sudo chmod +x .local/bin/scripts
 5- cp -R bspwmbydarch_fedora/home/.[^.]* $HOME/ 
 6- cd bspwmbydarch/compilar/st 
 7- sudo make install 
-8- sudo cp -R bspwmbydarch_fedora/root/fzf/* /usr/share/fzf
-9- sudo cp -R bspwmbydarch_fedora/root/gtk/iconos/* /usr/share/icons
-10- sudo cp -R bspwmbydarch_fedora/root/gtk/temas/* /usr/share/themes
-11- sudo cp -R bspwmbydarch_fedora/root/wall/* /usr/share/
 
 
 -----------------------------------------------------------
@@ -26,7 +23,7 @@ esta guia está hecha con la instalacion minimal con fedora server.
 
 1- sudo dnf install fedora-workstation-repositories
 2- sudo dnf update
-3- sudo dnf config-manager --set-enabled google-chrome phracek-PyCharm
+3- sudo dnf config-manager --set-enabled google-chrome
 
 5- ##instalar repo rpmfusion
 
@@ -39,7 +36,7 @@ esta guia está hecha con la instalacion minimal con fedora server.
    sudo dnf repolist --all
 -----------------------------------------------------------
 
-## instalar xorg y dependencias para picom y lemonbar
+## instalar xorg y dependencias
 
 1- sudo dnf install @base-x light
 
@@ -73,12 +70,9 @@ sudo usermod -a -G video (tu usuario)
 
 ## instalar paquetes para bspwm.
 
-1- sudo dnf groupinstall "Development Tools"
+1- sudo dnf groupinstall "Development Tools" "Fonts" 
 
-2- sudo dnf install @multimedia
-
-
-3- sudo dnf install cmake meson bspwm sxhkd rofi nitrogen pcmanfm zsh zsh-autosuggestions zsh-syntax-highlighting zathura-zsh-completion tmux htop telegram-desktop leafpad xarchiver ffmpeg maim xclip xdotool mpv google-chrome-stable dnf-utils ranger neovim neofetch libva-intel-driver slock fzf lxappearance transmission pavucontrol sxiv blueberry dunst zathura-pdf-poppler zathura intel-media-driver polkit-gnome papirus-icon-theme polybar xdg-user-dirs && xdg-user-dirs-update
+2 - sudo dnf install cmake meson bspwm sxhkd rofi nitrogen pcmanfm zsh zsh-autosuggestions zsh-syntax-highlighting zathura-zsh-completion tmux htop telegram-desktop xarchiver ffmpeg maim xclip xdotool mpv firefox dnf-utils ranger neovim neofetch slock fzf lxappearance transmission sxiv blueberry dunst zathura-pdf-poppler zathura intel-media-driver polkit-gnome papirus-icon-theme polybar xdg-user-dirs && xdg-user-dirs-update
 
 
 ---------------------------------------------------------------------
