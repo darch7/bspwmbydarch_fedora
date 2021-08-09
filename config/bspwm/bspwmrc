@@ -14,7 +14,7 @@
 
 export SUDO_ASKPASS="$HOME/.local/bin/scripts/pass"
 export PATH="${PATH}:$HOME/.local/bin/scripts"
-export PATH="$PATH:$(du "$HOME/.local/bin/modulos/" | cut -f2 | paste -sd ':' -)"
+export PATH="$PATH:$("$HOME/.local/bin/modulos/" | cut -f2 | paste -sd ':' -)"
 export EDITOR=nvim
 xrdb ~/.Xresources &
 pkill -9 polybar &
